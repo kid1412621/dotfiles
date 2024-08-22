@@ -1,2 +1,2 @@
 # dotfiles
-`stow module`
+`stow --adopt .`
