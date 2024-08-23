@@ -27,4 +27,4 @@ git submodule update --init --recursive
 echo "All Vim plugins updated."
 
 # create symblic links
-stow --adopt .
+stow --adopt -t $HOME .
