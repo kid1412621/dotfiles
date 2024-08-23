@@ -25,7 +25,7 @@ install_package() {
       sudo dnf install -y --quiet "$package"
       ;;
     apt)
-      sudo apt update && sudo apt install -y "$package"
+      sudo apt update -qq && sudo apt install -qq -y "$package"
       ;;
   esac
 }
@@ -41,21 +41,14 @@ apps_to_install=(
   "stow"
 )
 
-for app in "${apps_to_install[@]}"; do
-  install_package "$app"
-done
+install_package "${apps_to_install[@]}"
+
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd "$SCRIPT_DIR"
+echo "$SCRIPT_DIR"
 
 # update vim plugins
 git submodule update --init --recursive
-#PLUGIN_DIR=~/.vim/pack/plugins/start
-#for dir in "$PLUGIN_DIR"/*; do
-#  if [ -d "$dir/.git" ]; then
-#    echo "Updating $(basename "$dir")..."
-#    cd "$dir" || exit
-#    git pull
-#  fi
-#done
-
 echo "All Vim plugins updated."
 
 stow --adopt .

@@ -1,3 +1,6 @@
 [submodule ".vim/pack/plugins/start/nerdtree"]
 	path = .vim/pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/pack/plugins/start/easymotion"]
+	path = .vim/pack/plugins/start/easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
