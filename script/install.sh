@@ -2,7 +2,7 @@
 
 # install necessary packages
 
-APPS=("curl" "stow" "vim" "neovim" "tmux" "bat" "fd" "fzf")
+APPS=("curl" "stow" "vim" "neovim" "tmux" "bat" "fzf")
 
 # List of supported package managers
 PKG_MANAGERS=("brew" "dnf" "apt")
@@ -46,7 +46,7 @@ case "$SHELL" in
     */bash)
         if [ ! -d "$HOME/.oh-my-bash" ]; then
             echo "Installing Oh My Bash..."
-            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+            bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
         fi
         ;;
     *)
