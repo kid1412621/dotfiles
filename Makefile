@@ -7,7 +7,7 @@ install_packages:
 
 update_plugins: 
 	git submodule update --init --recursive
-	echo "All Vim plugins updated."
+	@echo "All Vim plugins updated."
 
 create_symlinks: update_plugins
 	stow --adopt -t $(HOME) .
