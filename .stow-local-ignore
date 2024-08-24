@@ -22,4 +22,5 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-install.sh
+/script
+Makefile
