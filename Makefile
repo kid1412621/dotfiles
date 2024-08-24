@@ -1,15 +1,13 @@
-.PHONY: all setup install_packages update_plugins
+.PHONY: all install_packages update_plugins create_symlinks
 
-all: setup update_plugins
-
-setup: install_packages create_symlinks
+all: install_packages update_plugins create_symlinks
 
 install_packages:
 	./script/install.sh
 
-update_plugins:
+update_plugins: 
 	git submodule update --init --recursive
 	echo "All Vim plugins updated."
 
-create_symlinks:
+create_symlinks: update_plugins
 	stow --adopt -t $(HOME) .
