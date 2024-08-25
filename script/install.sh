@@ -1,10 +1,7 @@
 #!/bin/bash
-
-# install necessary packages
+set -eou pipefail
 
 APPS=("curl" "stow" "vim" "neovim" "tmux" "bat" "fzf")
-
-# List of supported package managers
 PKG_MANAGERS=("brew" "dnf" "apt")
 
 # Detect package manager
@@ -21,6 +18,7 @@ if [ -z "$PKG_MANAGER" ]; then
   exit 1
 fi
 
+# install necessary packages
 case "$PKG_MANAGER" in
     brew)
         brew install --quiet "${APPS[@]}"
@@ -40,13 +38,13 @@ case "$SHELL" in
     */zsh)
         if [ ! -d "$HOME/.oh-my-zsh" ]; then
             echo "Installing Oh My Zsh..."
-            sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+            curl -fsSL https://install.ohmyz.sh/ | sh
         fi
         ;;
     */bash)
         if [ ! -d "$HOME/.oh-my-bash" ]; then
             echo "Installing Oh My Bash..."
-            bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+            curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash
         fi
         ;;
     *)
