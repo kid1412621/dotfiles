@@ -28,3 +28,9 @@ git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles.git && make
 Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
 
 > Note: The intall script only supports package manager: brew, dnf and apt. And make sure the user got install permission.
+
+## Todo:
+
+- [ ] Fisnish all packages and configs.
+- [ ] Distro-specific configs, like bat, fd under Ubuntu.
+- [ ] Replace `git submodules` with `git subtree`.
