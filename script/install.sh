@@ -1,67 +1,42 @@
 #!/bin/bash
 set -eou pipefail
 
-APPS=("curl" "stow" "vim" "neovim" "tmux" "bat" "fzf")
-PKG_MANAGERS=("brew" "dnf" "apt")
+source $(dirname "${BASH_SOURCE[0]}")/util.sh
 
-# Detect package manager
-for pkg_manager in "${PKG_MANAGERS[@]}"; do
-    if command -v "$pkg_manager" >/dev/null 2>&1; then
-        PKG_MANAGER="$pkg_manager"
-        break
-    fi
-done
+APPS=("curl" "stow" "vim" "tmux" "bat" "fzf")
+OS_TYPE=$(os)
+PKG_MANAGER=$(package_manager)
 
 # Check if a package manager was found
 if [ -z "$PKG_MANAGER" ]; then
-  echo "No supported package manager found ($PKG_MANAGERS)."
+  echo "No supported package manager found."
   exit 1
 fi
 
-# install necessary packages
-case "$PKG_MANAGER" in
-    brew)
-        brew install --quiet "${APPS[@]}"
-        ;;
-    dnf)
-        sudo dnf install -y --quiet "${APPS[@]}"
-        ;;
-    apt)
-        sudo apt update -qq
-        sudo apt install -qq -y "${APPS[@]}"
-        ;;
-esac
+# install brew if missing on MacOS
+if [[ $OS_TYPE = "Darwin" ]] && ! cmd_exists brew; then
+  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+fi
 
+$(package_install_cmd) "${APPS[@]}"
 
 # Determine the current default shell
 case "$SHELL" in
-    */zsh)
-    	SHELL_RC=".zshrc"
-        if [ ! -d "$HOME/.oh-my-zsh" ]; then
-            echo "Installing Oh My Zsh..."
-            curl -fsSL https://install.ohmyz.sh/ | sh
-        fi
-        ;;
-    */bash)
-    	SHELL_RC=".bashrc"
-        if [ ! -d "$HOME/.oh-my-bash" ]; then
-            echo "Installing Oh My Bash..."
-            curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash
-        fi
-        ;;
-    *)
-        echo "Skip for other shell (not zsh or bash)."
-        ;;
+*/zsh)
+  SHELL_RC=".zshrc"
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    curl -fsSL https://install.ohmyz.sh/ | sh
+  fi
+  ;;
+*/bash)
+  SHELL_RC=".bashrc"
+  if [ ! -d "$HOME/.oh-my-bash" ]; then
+    echo "Installing Oh My Bash..."
+    curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash
+  fi
+  ;;
+*)
+  echo "Skip for other shell (not zsh or bash)."
+  ;;
 esac
-
-# check neovim version (debian holding old version, lazyvim required neovim >= 0.8.0)
-NVIM_VERSION=$(nvim -v | grep -oE '^NVIM v[0-9.]+' | sed 's/^NVIM v//' | sed 's/\.//g')
-if [[ $NVIM_VERSION -lt 80 ]]; then
-	echo "reinstalling neovim with latest version"
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-	sudo $PKG_MANAGER remove -y neovim
-	sudo rm -rf /opt/nvim
-	sudo tar -C /opt -xzf nvim-linux64.tar.gz
-	rm nvim-linux64.tar.gz
-	echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> "$HOME/$SHELL_RC"
-fi

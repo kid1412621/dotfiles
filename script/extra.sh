@@ -1,14 +1,45 @@
 #!/bin/bash
+set -eou pipefail
 
 source $(dirname "${BASH_SOURCE[0]}")/util.sh
 
-OS_TYPE=$(os)
-EXTRA_APPS=("ripgrep")
+EXTRA_APPS=("neovim" "ripgrep")
+PKG_MGR=$(package_manager)
 
-echo "$OS_TYPE"
-echo "$(package_manager)"
+install_noevim() {
+  local RC_FILE="$HOME/$(shell_rc)"
+  local INSTALL_PATH="/opt/nvim-linux64"
 
-$(package_install_cmd) "${EXTRA_APPS[@]}"
+  if ! cmd_exists nvim; then
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    sudo rm -rf "$INSTALL_PATH"
+    sudo tar -C /opt -xzf nvim-linux64.tar.gz
+    rm nvim-linux64.tar.gz
+    if ! grep -q "$INSTALL_PATH/bin" "$RC_FILE"; then
+      echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
+    fi
+  else
+    # check neovim version (debian holding old version, lazyvim required neovim >= 0.9.0)
+    local NVIM_VERSION=$(nvim -v | grep -oE '^NVIM v[0-9.]+' | sed 's/^NVIM v//' | sed 's/\.//g')
+    if [[ $((10#$NVIM_VERSION)) -lt 90 ]]; then
+      echo "reinstalling neovim with latest version"
+      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+      sudo $PKG_MGR remove -y neovim
+      sudo rm -rf "$INSTALL_PATH"
+      sudo tar -C /opt -xzf nvim-linux64.tar.gz
+      rm nvim-linux64.tar.gz
+      if ! grep -q "$INSTALL_PATH/bin" "$RC_FILE"; then
+        echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
+      fi
+    fi
+  fi
+}
+
+if [[ $PKG_MGR = "apt" ]]; then
+  install_noevim
+else
+  $(package_install_cmd) "${EXTRA_APPS[@]}"
+fi
 
 # Nerd fonts
 
@@ -18,6 +49,6 @@ $(package_install_cmd) "${EXTRA_APPS[@]}"
 # cd $FONT_DIR && curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 # tar xf JetBrainsMono.tar.xz
 # rm JetBrainsMono.tar.xz
-# sudo fc-cache -fr
+# sudo fc-cache -or
 #
 # brew install font-jetbrains-mono-nerd-font

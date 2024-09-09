@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cmd_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
 os() {
   local OS=$(uname -s)
   if [[ $OS = "Darwin" ]]; then
@@ -30,4 +34,15 @@ package_install_cmd() {
   elif [[ $os = "debian" || $os = "ubuntu" ]]; then
     echo "sudo apt install -qq -y"
   fi
+}
+
+shell_rc() {
+  case "$SHELL" in
+  */zsh)
+    echo ".zshrc"
+    ;;
+  */bash)
+    echo ".bashrc"
+    ;;
+  esac
 }

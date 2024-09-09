@@ -2,18 +2,21 @@
 
 ## Setups
 
-- git: tig + lazygit
+- **git**: tig + lazygit
   - .gitconfig
   - .tig
-- vim: neovim + lazyvim
+- **vim**: neovim + lazyvim
   - [.vim](.vim) (navtive plugin via git submodule)
   - [.config/nvim](.config/nvim/) (lazyvim)
 - [oh-my-zsh](https://ohmyz.sh/) / [oh-my-bash](https://ohmybash.nntoan.com/)
     - .zshrc / .bashrc
+- **tmux**
 - bat
 - fd
 - fzf
-- tmux
+- ripgrep
+
+> **Bold** means core apps, otherwise extra apps.
 
 ## Usage
 
@@ -23,6 +26,12 @@ Then run:
 
 ```bash
 git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles.git && make
+```
+
+Optionally, just install core apps:
+
+```bash
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles.git && make core
 ```
 
 Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
