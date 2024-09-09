@@ -3,9 +3,12 @@
 source $(dirname "${BASH_SOURCE[0]}")/util.sh
 
 OS_TYPE=$(os)
+EXTRA_APPS=("ripgrep")
 
 echo "$OS_TYPE"
 echo "$(package_manager)"
+
+$(package_install_cmd) "${EXTRA_APPS[@]}"
 
 # Nerd fonts
 
