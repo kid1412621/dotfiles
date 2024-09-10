@@ -3,7 +3,7 @@ set -eou pipefail
 
 source $(dirname "${BASH_SOURCE[0]}")/util.sh
 
-APPS=("curl" "stow" "vim" "tmux" "bat" "fzf")
+APPS=("curl" "stow" "vim" "tmux")
 OS_TYPE=$(os)
 PKG_MANAGER=$(package_manager)
 

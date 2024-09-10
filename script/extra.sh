@@ -3,7 +3,6 @@ set -eou pipefail
 
 source $(dirname "${BASH_SOURCE[0]}")/util.sh
 
-EXTRA_APPS=("neovim" "ripgrep")
 PKG_MGR=$(package_manager)
 
 install_noevim() {
@@ -35,14 +34,27 @@ install_noevim() {
   fi
 }
 
-if [[ $PKG_MGR = "apt" ]]; then
+case "$PKG_MGR" in
+apt)
   install_noevim
-else
-  $(package_install_cmd) "${EXTRA_APPS[@]}"
-fi
+
+  APPS=("bat" "ripgrep" "fd-find" "fzf")
+  $(package_install_cmd) "${APPS[@]}"
+  # symlink bat
+  mkdir -p ~/.local/bin
+  ln -sf /usr/bin/batcat ~/.local/bin/bat
+  ;;
+dnf)
+  APPS=("bat" "ripgrep" "fd-find" "fzf")
+  $(package_install_cmd) "${APPS[@]}"
+  ;;
+brew)
+  APPS=("bat" "ripgrep" "fd" "fzf" "neovim" "font-jetbrains-mono-nerd-font")
+  $(package_install_cmd) "${APPS[@]}"
+  ;;
+esac
 
 # Nerd fonts
-
 # FONT_DIR=$HOME/.local/share/fonts
 #
 # mkdir -p $FONT_DIR
@@ -50,5 +62,3 @@ fi
 # tar xf JetBrainsMono.tar.xz
 # rm JetBrainsMono.tar.xz
 # sudo fc-cache -or
-#
-# brew install font-jetbrains-mono-nerd-font

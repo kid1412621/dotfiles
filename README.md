@@ -1,22 +1,27 @@
 # dotfiles
 
+Opinionated dotfiles with minimal setups. 
+
+Target to support MacOS, Linux(Ubuntu on WSL, Fedora, Debian on ChromeOS).
+
 ## Setups
 
 - **git**: tig + lazygit
   - .gitconfig
   - .tig
 - **vim**: neovim + lazyvim
-  - [.vim](.vim) (navtive plugin via git submodule)
+  - [.vim](.vim) (native plugin via git submodule)
   - [.config/nvim](.config/nvim/) (lazyvim)
-- [oh-my-zsh](https://ohmyz.sh/) / [oh-my-bash](https://ohmybash.nntoan.com/)
-    - .zshrc / .bashrc
+- [**oh-my-zsh**](https://ohmyz.sh/) / [**oh-my-bash**](https://ohmybash.nntoan.com/)
+    - [.zshrc](./.zshrc) / .bashrc
 - **tmux**
 - bat
 - fd
 - fzf
 - ripgrep
+- lazydocker
 
-> **Bold** means core apps, otherwise extra apps.
+> **Bold** means core apps, otherwise extra apps(mainly rust-based CLI apps to enhance the terminal experience).
 
 ## Usage
 
@@ -37,11 +42,11 @@ git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles.git && make 
 Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
 
 > > [!NOTE]
-> 1. The intall script only supports package manager: brew, dnf and apt. And make sure the user got install permission.
+> 1. The install script only supports package manager: brew, dnf and apt. And make sure the user got install permission.
 > 2. Replace `.ssh/config` with your own settings.
 
 ## Todo:
 
-- [ ] Fisnish all packages and configs.
-- [ ] Distro-specific configs, like bat, fd under Ubuntu.
+- [ ] Finish all packages and configs.
+- [x] Distro-specific configs, like bat, fd under Ubuntu.
 - [ ] Replace `git submodules` with `git subtree`.
