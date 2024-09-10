@@ -44,13 +44,15 @@ apt)
   mkdir -p ~/.local/bin
   ln -sf $(which batcat) ~/.local/bin/bat
   ln -sf $(which fdfind) ~/.local/bin/fd
+  # zoxide
+  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
   ;;
 dnf)
-  APPS=("bat" "ripgrep" "fd-find" "fzf")
+  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide")
   $(package_install_cmd) "${APPS[@]}"
   ;;
 brew)
-  APPS=("bat" "ripgrep" "fd" "fzf" "neovim" "font-jetbrains-mono-nerd-font")
+  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "neovim" "font-jetbrains-mono-nerd-font")
   $(package_install_cmd) "${APPS[@]}"
   ;;
 esac

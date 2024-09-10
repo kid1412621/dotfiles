@@ -15,7 +15,7 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
 # android
-export ANDROID_HOME="/Users/kid/Library/Android/sdk"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
 
 # pip zsh completion start
@@ -29,7 +29,6 @@ function _pip_completion {
 }
 compctl -K _pip_completion /usr/local/opt/python@3.10/bin/python3.10 -m pip
 # pip zsh completion end
-
 
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
