@@ -42,7 +42,8 @@ apt)
   $(package_install_cmd) "${APPS[@]}"
   # symlink bat
   mkdir -p ~/.local/bin
-  ln -sf /usr/bin/batcat ~/.local/bin/bat
+  ln -sf $(which batcat) ~/.local/bin/bat
+  ln -sf $(which fdfind) ~/.local/bin/fd
   ;;
 dnf)
   APPS=("bat" "ripgrep" "fd-find" "fzf")
