@@ -53,7 +53,6 @@ OMB_HYPHEN_SENSITIVE="false"
 # OMB_DEFAULT_ALIASES="check"
 
 OMB_USE_SUDO=true
-OMB_ALIAS_PACKAGE_MANAGER_SUDO=sudo
 
 # To enable/disable display of Python virtualenv and condaenv
 # OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
@@ -121,7 +120,7 @@ export LANG=en_US.UTF-8
 # Custom Aliases
 alias g="git"
 alias lzg="lazygit"
-alias lzg="lazydocker"
+alias lzd="lazydocker"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"

@@ -13,13 +13,14 @@ Target to support MacOS, Linux(Ubuntu on WSL, Fedora, Debian on ChromeOS).
   - [.vim](.vim) (native plugin via git submodule)
   - [.config/nvim](.config/nvim/) (lazyvim)
 - [**oh-my-zsh**](https://ohmyz.sh/) / [**oh-my-bash**](https://ohmybash.nntoan.com/)
-    - [.zshrc](./.zshrc) / .bashrc
+    - [.zshrc](./.zshrc) / [.bashrc](./.bashrc)
 - **tmux**
 - bat
 - fd
 - fzf
 - ripgrep
 - zoxide
+- delta
 - lazydocker
 
 > **Bold** means core apps, otherwise extra apps(mainly rust-based CLI apps to enhance the terminal experience).

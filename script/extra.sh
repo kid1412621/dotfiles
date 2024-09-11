@@ -48,13 +48,19 @@ apt)
   if ! cmd_exists zoxide; then
     curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
   fi
+  # delta
+  # debian under 13, cannot install via apt, and it will be a little complicated to install latest version
+  if ! cmd_exists delta; then
+    curl -fLO https://github.com/dandavison/delta/releases/download/0.18.1/git-delta_0.18.1_amd64.deb
+    sudo dpkg -i git-delta_0.18.1_amd64.deb && rm git-delta_0.18.1_amd64.deb
+  fi
   ;;
 dnf)
-  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide")
+  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide" "git-delta")
   $(package_install_cmd) "${APPS[@]}"
   ;;
 brew)
-  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "neovim" "font-jetbrains-mono-nerd-font")
+  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "git-delta" "neovim" "font-jetbrains-mono-nerd-font")
   $(package_install_cmd) "${APPS[@]}"
   ;;
 esac
