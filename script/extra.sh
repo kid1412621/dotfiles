@@ -40,12 +40,14 @@ apt)
 
   APPS=("bat" "ripgrep" "fd-find" "fzf")
   $(package_install_cmd) "${APPS[@]}"
-  # symlink bat
+  # symlink bat, fd
   mkdir -p ~/.local/bin
   ln -sf $(which batcat) ~/.local/bin/bat
   ln -sf $(which fdfind) ~/.local/bin/fd
   # zoxide
-  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+  if ! cmd_exists zoxide; then
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+  fi
   ;;
 dnf)
   APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide")

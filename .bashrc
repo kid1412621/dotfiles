@@ -16,12 +16,10 @@ fi
 
 # oh-my-bash configs
 export OSH="$HOME/.oh-my-bash"
+export UPDATE_OSH_DAYS=7
+
 OSH_THEME="pure"
-export UPDATE_OSH_DAYS=13
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
+ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 OMB_HYPHEN_SENSITIVE="false"
 
