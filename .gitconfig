@@ -29,3 +29,8 @@
 
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+
+[delta]
+    side-by-side = true
+    line-numbers = true
+

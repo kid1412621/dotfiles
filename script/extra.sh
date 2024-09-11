@@ -49,10 +49,16 @@ apt)
     curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
   fi
   # delta
-  # debian under 13, cannot install via apt, and it will be a little complicated to install latest version
+  # debian under 13, cannot install via apt
   if ! cmd_exists delta; then
-    curl -fLO https://github.com/dandavison/delta/releases/download/0.18.1/git-delta_0.18.1_amd64.deb
-    sudo dpkg -i git-delta_0.18.1_amd64.deb && rm git-delta_0.18.1_amd64.deb
+    delta_version=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
+    delta_deb_file="git-delta_${delta_version}_amd64.deb"
+    curl -fLO "https://github.com/dandavison/delta/releases/latest/download/$delta_deb_file"
+    sudo dpkg -i $delta_deb_file && rm $delta_deb_file
+  fi
+  # lazydocker
+  if cmd_exists docker && ! cmd_exists lazydocker; then
+    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
   fi
   ;;
 dnf)
