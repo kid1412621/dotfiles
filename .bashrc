@@ -4,42 +4,26 @@ case $- in
 *) return ;;
 esac
 
-export JAVA_HOME='/opt/android-studio/jbr'
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ]; then
+  PATH="$HOME/bin:$PATH"
+fi
 
-# Path to your oh-my-bash installation.
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
+
+# oh-my-bash configs
 export OSH="$HOME/.oh-my-bash"
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-bash is loaded.
 OSH_THEME="pure"
-
-# If you set OSH_THEME to "random", you can ignore themes you don't like.
-# OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
-
-# Uncomment the following line to use case-sensitive completion.
-# OMB_CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# OMB_HYPHEN_SENSITIVE="false"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_OSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+export UPDATE_OSH_DAYS=13
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
+OMB_HYPHEN_SENSITIVE="false"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -70,12 +54,8 @@ OSH_THEME="pure"
 # aliases by the default OMB aliases defined in lib/*.sh
 # OMB_DEFAULT_ALIASES="check"
 
-# Would you like to use another custom folder than $OSH/custom?
-# OSH_CUSTOM=/path/to/new-custom-folder
-
-# To disable the uses of "sudo" by oh-my-bash, please set "false" to
-# this variable.  The default behavior for the empty value is "true".
 OMB_USE_SUDO=true
+OMB_ALIAS_PACKAGE_MANAGER_SUDO=sudo
 
 # To enable/disable display of Python virtualenv and condaenv
 # OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
@@ -86,9 +66,11 @@ OMB_USE_SUDO=true
 # Example format: completions=(ssh git bundler gem pip pip3)
 # Add wisely, as too many completions slow down shell startup.
 completions=(
-  git
-  composer
   ssh
+  git
+  docker
+  docker-compose
+  npm
 )
 
 # Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
@@ -97,6 +79,8 @@ completions=(
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
   general
+  docker
+  package-manager
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -106,6 +90,7 @@ aliases=(
 plugins=(
   git
   bashmarks
+  zoxide
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -135,18 +120,18 @@ export LANG=en_US.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-bash libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-bash
-# users are encouraged to define aliases within the OSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Aliases
+# Custom Aliases
+alias g="git"
 alias lzg="lazygit"
 alias lzg="lazydocker"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH="$HOME/.local/bin:$PATH"
-eval "$(zoxide init bash)"
-
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
+
+# export JAVA_HOME='/opt/android-studio/jbr'
+# eval "$(jenv init -)"
+
+if [ -n "$WSLENV" ]; then
+  export BROWSER="wslview"
+fi
