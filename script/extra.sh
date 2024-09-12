@@ -48,34 +48,57 @@ apt)
   if ! cmd_exists zoxide; then
     curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
   fi
-  # delta
-  # debian under 13, cannot install via apt
+  # delta (debian under 13, cannot install via apt)
   if ! cmd_exists delta; then
     delta_version=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
     delta_deb_file="git-delta_${delta_version}_amd64.deb"
     curl -fLO "https://github.com/dandavison/delta/releases/latest/download/$delta_deb_file"
     sudo dpkg -i $delta_deb_file && rm $delta_deb_file
   fi
-  # lazydocker
-  if cmd_exists docker && ! cmd_exists lazydocker; then
-    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+  # lazygit
+  if ! cmd_exists lazygit; then
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit /usr/local/bin
+    rm lazygit.tar.gz
+    rm -rf lazygit
   fi
   ;;
 dnf)
   APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide" "git-delta")
   $(package_install_cmd) "${APPS[@]}"
+  # lazygit
+  if ! cmd_exists lazygit; then
+    sudo dnf copr enable atim/lazygit -y
+    sudo dnf install lazygit
+  fi
   ;;
 brew)
-  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "git-delta" "neovim" "font-jetbrains-mono-nerd-font")
+  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "git-delta" "neovim" "lazygit")
   $(package_install_cmd) "${APPS[@]}"
   ;;
 esac
 
+# lazydocker
+if cmd_exists docker && ! cmd_exists lazydocker; then
+  if [[ $PKG_MGR = "brew" ]]; then
+    $(package_install_cmd) lazydocker
+  else
+    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+  fi
+fi
+
 # Nerd fonts
-# FONT_DIR=$HOME/.local/share/fonts
-#
-# mkdir -p $FONT_DIR
-# cd $FONT_DIR && curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-# tar xf JetBrainsMono.tar.xz
-# rm JetBrainsMono.tar.xz
-# sudo fc-cache -or
+if [[ $PKG_MGR = "brew" ]]; then
+  $(package_install_cmd) font-jetbrains-mono-nerd-font
+else
+  if [[ ! $(fc-list | grep "JetBrainsMonoNerdFont") ]]; then
+    FONT_DIR=$HOME/.local/share/fonts
+    mkdir -p $FONT_DIR
+    cd $FONT_DIR && curl -fOL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+    tar xf JetBrainsMono.tar.xz
+    rm JetBrainsMono.tar.xz
+    sudo fc-cache -r
+  fi
+fi

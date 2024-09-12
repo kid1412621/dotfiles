@@ -22,6 +22,7 @@ Target to support MacOS, Linux(Ubuntu on WSL, Fedora, Debian on ChromeOS).
 - zoxide
 - delta
 - lazydocker
+- JetBrainsMonoNerdFont
 
 > **Bold** means core apps, otherwise extra apps(mainly rust-based CLI apps to enhance the terminal experience).
 
