@@ -14,7 +14,7 @@ install_noevim() {
     sudo rm -rf "$INSTALL_PATH"
     sudo tar -C /opt -xzf nvim-linux64.tar.gz
     rm nvim-linux64.tar.gz
-    if ! grep -q "$INSTALL_PATH/bin" "$RC_FILE"; then
+    if ! grep "$INSTALL_PATH/bin" "$RC_FILE"; then
       echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
     fi
   else
@@ -27,7 +27,7 @@ install_noevim() {
       sudo rm -rf "$INSTALL_PATH"
       sudo tar -C /opt -xzf nvim-linux64.tar.gz
       rm nvim-linux64.tar.gz
-      if ! grep -q "$INSTALL_PATH/bin" "$RC_FILE"; then
+      if ! grep "$INSTALL_PATH/bin" "$RC_FILE"; then
         echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
       fi
     fi

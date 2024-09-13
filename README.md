@@ -4,6 +4,8 @@ Opinionated dotfiles with minimal setups.
 
 Target to support MacOS, Linux(Ubuntu on WSL, Fedora, Debian on ChromeOS).
 
+Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
+
 ## Setups
 
 - **git**: tig + lazygit
@@ -33,16 +35,14 @@ Make sure you installed `git` and `make`.
 Then run:
 
 ```bash
-git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles.git && make
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make
 ```
 
 Optionally, just install core apps:
 
 ```bash
-git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles.git && make core
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
 ```
-
-Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
 
 > > [!NOTE]
 > 1. The install script only supports package manager: brew, dnf and apt. And make sure the user got install permission.
