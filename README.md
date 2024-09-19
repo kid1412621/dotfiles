@@ -2,14 +2,14 @@
 
 Opinionated dotfiles with minimal setups. 
 
-Target to support MacOS, Linux(Ubuntu on WSL, Fedora, Debian on ChromeOS).
+Target to support MacOS, Linux(e.g. Ubuntu on WSL, Fedora, Debian on ChromeOS) under single branch.
 
 Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
 
 ## Setups
 
 - **git**: tig + lazygit
-  - .gitconfig
+  - [.gitconfig](./.gitconfig)
   - .tig
 - **vim**: neovim + lazyvim
   - [.vim](.vim) (native plugin via git submodule)
@@ -26,7 +26,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 - lazydocker
 - JetBrainsMonoNerdFont
 
-> **Bold** means core apps, otherwise extra apps(mainly rust-based CLI apps to enhance the terminal experience).
+> **Bold** means core apps, otherwise extra apps(mainly [rust-based CLI apps](https://github.com/sts10/rust-command-line-utilities) to enhance the terminal experience).
 
 ## Usage
 
