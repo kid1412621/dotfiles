@@ -10,7 +10,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 
 - **git**: tig + lazygit
   - [.gitconfig](./.gitconfig)
-  - .tig
+  - [.tigrc](./.tigrc)
 - **vim**: neovim + lazyvim
   - [.vim](.vim) (native plugin via git submodule)
   - [.config/nvim](.config/nvim/) (lazyvim)
