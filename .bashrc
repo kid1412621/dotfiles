@@ -121,6 +121,7 @@ export LANG=en_US.UTF-8
 alias g="git"
 alias lzg="lazygit"
 alias lzd="lazydocker"
+alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"

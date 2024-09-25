@@ -88,4 +88,9 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+alias g="git"
+alias lzg="lazygit"
+alias lzd="lazydocker"
+alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+
 eval "$(zoxide init zsh)"
