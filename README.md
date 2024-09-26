@@ -13,7 +13,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
   - [.tigrc](./.tigrc)
 - **vim**: 
   - [.vimrc](./vimrc)
-  - [.vim](./.vim): (native plugin via git submodule)
+  - [.vim](./.vim/pack/plugins/start/) (native plugin via git submodule)
     - [nerdtree](https://github.com/preservim/nerdtree)
     - [easymotion](https://github.com/easymotion/vim-easymotion)
     - [surround](https://github.com/tpope/vim-surround)
