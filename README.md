@@ -16,7 +16,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
   - [.config/nvim](.config/nvim/) (lazyvim)
 - [**oh-my-zsh**](https://ohmyz.sh/) / [**oh-my-bash**](https://ohmybash.nntoan.com/)
     - [.zshrc](./.zshrc) / [.bashrc](./.bashrc)
-- **tmux**
+- **tmux**: [.tmux.conf](./.tmux.conf)
 - bat
 - fd
 - fzf
@@ -35,13 +35,18 @@ Make sure you installed `git` and `make`.
 Then run:
 
 ```bash
-git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make
+git clone --recursive https://github.com/kid1412621/dotfiles.git && cd dotfiles && make
 ```
 
 Optionally, just install core apps:
 
 ```bash
-git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
+git clone --recursive https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
+```
+
+For vim plugins update:
+```
+git submodule update --init --recursive
 ```
 
 > > [!NOTE]
@@ -52,5 +57,5 @@ git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
 
 - [x] ~~Finish all packages and configs.~~
 - [x] ~~Distro-specific configs, like bat, fd under Ubuntu.~~
-- [ ] Replace `git submodules` with `git subtree`.
-- [ ] Dev setups.
+- [ ] ~~Replace `git submodules` with `git subtree`.~~
+- [ ] Dev env setups, e.g. NodeJS, Java, Python.
