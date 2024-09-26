@@ -11,8 +11,14 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 - **git**: tig + lazygit
   - [.gitconfig](./.gitconfig)
   - [.tigrc](./.tigrc)
-- **vim**: neovim + lazyvim
-  - [.vim](.vim) (native plugin via git submodule)
+- **vim**: 
+  - [.vimrc](./vimrc)
+  - [.vim](./.vim): (native plugin via git submodule)
+    - [nerdtree](https://github.com/preservim/nerdtree)
+    - [easymotion](https://github.com/easymotion/vim-easymotion)
+    - [surround](https://github.com/tpope/vim-surround)
+    - [commentary](https://github.com/tpope/vim-commentary)
+- neovim:
   - [.config/nvim](.config/nvim/) (lazyvim)
 - [**oh-my-zsh**](https://ohmyz.sh/) / [**oh-my-bash**](https://ohmybash.nntoan.com/)
     - [.zshrc](./.zshrc) / [.bashrc](./.bashrc)
@@ -45,7 +51,8 @@ git clone --recursive https://github.com/kid1412621/dotfiles.git && cd dotfiles 
 ```
 
 For vim plugins update:
-```
+
+```bash
 git submodule update --init --recursive
 ```
 

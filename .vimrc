@@ -7,7 +7,7 @@ set clipboard+=unnamed
 set paste
 
 syntax enable
-filetype on
+filetype plugin indent on
 
 let mapleader=" "
 nnoremap <C-n> :NERDTreeToggle<CR>

@@ -7,3 +7,6 @@
 [submodule ".vim/pack/plugins/start/surround"]
 	path = .vim/pack/plugins/start/surround
 	url = https://tpope.io/vim/surround.git
+[submodule ".vim/pack/plugins/start/commentary"]
+	path = .vim/pack/plugins/start/commentary
+	url = https://tpope.io/vim/commentary.git
