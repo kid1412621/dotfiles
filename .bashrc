@@ -118,6 +118,7 @@ export LANG=en_US.UTF-8
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Custom Aliases
+alias v="vim"
 alias g="git"
 alias lzg="lazygit"
 alias lzd="lazydocker"

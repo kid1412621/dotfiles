@@ -50,6 +50,7 @@ git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
 
 ## Todo:
 
-- [ ] Finish all packages and configs.
+- [x] ~~Finish all packages and configs.~~
 - [x] ~~Distro-specific configs, like bat, fd under Ubuntu.~~
 - [ ] Replace `git submodules` with `git subtree`.
+- [ ] Dev setups.
