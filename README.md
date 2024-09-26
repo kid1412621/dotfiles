@@ -8,7 +8,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 
 ## Setups
 
-- **git**: tig + lazygit
+- **git**: tig + [lazygit](https://github.com/jesseduffield/lazygit)
   - [.gitconfig](./.gitconfig)
   - [.tigrc](./.tigrc)
 - **vim**: 
@@ -19,7 +19,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
     - [surround](https://github.com/tpope/vim-surround)
     - [commentary](https://github.com/tpope/vim-commentary)
 - neovim:
-  - [.config/nvim](.config/nvim/) (lazyvim)
+  - [.config/nvim](.config/nvim/) ([lazyvim](https://github.com/LazyVim/LazyVim))
 - [**oh-my-zsh**](https://ohmyz.sh/) / [**oh-my-bash**](https://ohmybash.nntoan.com/)
     - [.zshrc](./.zshrc) / [.bashrc](./.bashrc)
 - **tmux**: [.tmux.conf](./.tmux.conf)
