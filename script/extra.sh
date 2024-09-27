@@ -71,7 +71,7 @@ dnf)
   # lazygit
   if ! cmd_exists lazygit; then
     sudo dnf copr enable atim/lazygit -y
-    sudo dnf install lazygit
+    $(package_install_cmd) lazygit
   fi
   ;;
 brew)
