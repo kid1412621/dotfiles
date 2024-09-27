@@ -2,7 +2,7 @@
 
 Opinionated dotfiles with minimal setups. 
 
-Target to support MacOS, Linux(e.g. Ubuntu on WSL, Fedora, Debian on ChromeOS) under single branch.
+Target to support MacOS, Linux(e.g. Ubuntu on WSL, Fedora on bare metal, Debian on ChromeOS) under single branch.
 
 Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symbolic links.
 
@@ -56,11 +56,11 @@ For vim plugins update:
 git submodule update --init --recursive
 ```
 
-> > [!NOTE]
+> [!NOTE]
 > 1. The install script only supports package manager: brew, dnf and apt. And make sure the user got install permission.
 > 2. Replace `.ssh/config` with your own settings.
 
-## Todo:
+## Todo
 
 - [x] ~~Finish all packages and configs.~~
 - [x] ~~Distro-specific configs, like bat, fd under Ubuntu.~~
