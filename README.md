@@ -41,13 +41,13 @@ Make sure you installed `git` and `make`.
 Then run:
 
 ```bash
-git clone --recursive https://github.com/kid1412621/dotfiles.git && cd dotfiles && make
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make
 ```
 
 Optionally, just install core apps:
 
 ```bash
-git clone --recursive https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
 ```
 
 Above commands will overwrite your existent dot files, if you want remain old ones, replace `make` to `make remain`, or `make core` to `make remain-core`.
