@@ -50,8 +50,6 @@ Optionally, just install core apps:
 git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
 ```
 
-Above commands will overwrite your existent dot files, if you want remain old ones, replace `make` to `make remain`, or `make core` to `make remain-core`.
-
 For vim plugins update:
 
 ```bash
