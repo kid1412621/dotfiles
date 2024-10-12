@@ -32,7 +32,8 @@ package_install_cmd() {
   elif [[ $os = "fedora" ]]; then
     echo "sudo dnf install -y --quiet"
   elif [[ $os = "debian" || $os = "ubuntu" ]]; then
-    echo "sudo apt update && sudo apt install -qq -y"
+    sudo apt update > /dev/null 2>&1
+    echo "sudo apt install -qq -y"
   fi
 }
 
