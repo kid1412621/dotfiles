@@ -4,6 +4,7 @@
 
 [core]
   pager = delta
+	autocrlf = input
 
 [interactive]
   diffFilter = delta --color-only
@@ -24,13 +25,11 @@
   autoSetupRemote = true
 
 [credential]
-	helper = /usr/local/bin/git-credential-manager
 	credentialStore = cache
-
-[credential "https://dev.azure.com"]
-	useHttpPath = true
-
+	helper = /usr/local/bin/git-credential-manager
 [delta]
     side-by-side = true
     line-numbers = true
 
+[credential "https://dev.azure.com"]
+	useHttpPath = true

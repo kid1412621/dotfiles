@@ -58,13 +58,18 @@ plugins=(
   git
   bundler
   dotenv
-  macos
-  rake
-  rbenv
-  ruby
   jenv
   zoxide
 )
+
+OS=$(uname -s)
+case "$OS" in
+	"Darwin")
+		plugins+=(macos brew)
+		;;
+	"Linux")
+		;;
+esac
 
 source $ZSH/oh-my-zsh.sh
 
