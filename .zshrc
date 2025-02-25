@@ -63,6 +63,7 @@ plugins=(
   rbenv
   ruby
   jenv
+  zoxide
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -94,4 +95,4 @@ alias lzg="lazygit"
 alias lzd="lazydocker"
 alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
-eval "$(zoxide init zsh)"
+export KUBECONFIG=~/.kube/config
