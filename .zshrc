@@ -68,6 +68,7 @@ case "$OSTYPE" in
 		;;
 	"linux*")
 		DISTRO=$(awk -F= '/^ID=/ {print $2}' /etc/os-release | tr -d '"')
+		plugins+=(systemd)
 		case "$DISTRO" in
 			"debian")
 				plugins+=(debian)
