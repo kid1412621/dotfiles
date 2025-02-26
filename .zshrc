@@ -56,18 +56,29 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  bundler
+  ssh
   dotenv
-  jenv
   zoxide
+  jenv
 )
 
-OS=$(uname -s)
-case "$OS" in
-	"Darwin")
+case "$OSTYPE" in
+	"darwin*")
 		plugins+=(macos brew)
 		;;
-	"Linux")
+	"linux*")
+		DISTRO=$(awk -F= '/^ID=/ {print $2}' /etc/os-release | tr -d '"')
+		case "$DISTRO" in
+			"debian")
+				plugins+=(debian)
+				;;
+			"ubuntu")
+				plugins+=(ubuntu)
+				;;
+			"fedora")
+				plugins+=(dnf)
+				;;
+		esac
 		;;
 esac
 
@@ -95,7 +106,6 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 
 alias v="vim"
-alias g="git"
 alias lzg="lazygit"
 alias lzd="lazydocker"
 alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
