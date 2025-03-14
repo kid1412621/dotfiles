@@ -50,6 +50,12 @@ Optionally, just install core apps:
 git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make core
 ```
 
+Or with GUI apps:
+
+```bash
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make gui
+```
+
 For vim plugins update:
 
 ```bash

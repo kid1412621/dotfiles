@@ -75,7 +75,7 @@ dnf)
   fi
   ;;
 brew)
-  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "git-delta" "neovim" "lazygit")
+  APPS=("bat" "ripgrep" "fd" "fzf" "zoxide" "git-delta" "neovim" "lazygit" "git-credential-manager")
   $(package_install_cmd) "${APPS[@]}"
   ;;
 esac
