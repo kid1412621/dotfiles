@@ -8,9 +8,9 @@ PKG_MGR=$(package_manager)
 
 case "$PKG_MGR" in
 brew)
-  GENERAL_APPS=("swish" "google-chrome" "obsidian")
-  DEV_APPS=("visual-studio-code" "android-studio" "intellij-idea" "orbstack")
-  $(package_install_cmd) "${DEV_APPS[@]}" "${GENERAL_APPS[@]}"
+  echo "Installing packages from Brewfile..."
+  brew tap homebrew/bundle
+  brew bundle install --file=../Brewfile
   ;;
 esac
 

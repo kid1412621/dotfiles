@@ -8,6 +8,8 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 
 ## Setups
 
+### CLI
+
 - **git**: tig + [lazygit](https://github.com/jesseduffield/lazygit)
   - [.gitconfig](./.gitconfig)
   - [.tigrc](./.tigrc)
@@ -33,6 +35,25 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 - JetBrainsMonoNerdFont
 
 > **Bold** means core apps, otherwise extra apps(mainly [rust-based CLI apps](https://github.com/sts10/rust-command-line-utilities) to enhance the terminal experience).
+
+### Lang-spicific bundles
+
+- Node
+- Java
+- Docker/K8s
+
+### GUI
+
+Currently only maintained MacOS GUI apps due via brew [bundle](https://github.com/Homebrew/homebrew-bundle). Default as follow(can chanage in [Brewfile](./Brewfile)):
+- Swish
+- Chrome
+- Obsidian
+- VS Code
+- Android Studio
+- IntelliJ IDEA
+- Orbstack
+- Postman
+- Proxyman
 
 ## Usage
 

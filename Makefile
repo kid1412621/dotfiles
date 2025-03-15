@@ -1,10 +1,10 @@
 .PHONY: all core gui install_core_packages install_extra_packages update_vim_plugins install_gui_app create_symlinks
 
-all: core install_extra_packages
+all: install_extra_packages
 
 core: install_core_packages update_vim_plugins create_symlinks
 
-gui: all install_gui_app
+gui: install_gui_app
 
 
 install_core_packages:
