@@ -8,8 +8,8 @@ PKG_MGR=$(package_manager)
 
 case "$PKG_MGR" in
 brew)
-  echo "Installing packages from Brewfile..."
-  brew bundle install --file="$(dirname "$0")/../Brewfile"
+  echo "Installing python related packages from Brewfile..."
+  brew bundle install --file="$(dirname "$0")/../python.Brewfile"
   ;;
 esac
 

@@ -59,7 +59,6 @@ plugins=(
   ssh
   dotenv
   zoxide
-  jenv
 )
 
 case "$OSTYPE" in
@@ -82,6 +81,14 @@ case "$OSTYPE" in
 		esac
 		;;
 esac
+
+# macOS got empty wrapper in /usr/bin/java, so cannot use `whence java`
+java -version &>/dev/null && plugins+=(jenv mvn gradle)
+# uv makes (pyenv pylint pip poetry virtualenv) useless
+whence python3 &>/dev/null && plugins+=(python uv)
+whence node &>/dev/null && plugins+=(nvm npm nodenv)
+whence docker &>/dev/null && plugins+=(docker docker-compose)
+whence kubectl &>/dev/null && plugins+=(kubectl k9s)
 
 source $ZSH/oh-my-zsh.sh
 

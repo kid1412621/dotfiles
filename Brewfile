@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 cask 'swish'
 cask 'google-chrome'
 cask 'obsidian'
