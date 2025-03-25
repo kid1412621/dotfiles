@@ -1,4 +1,4 @@
-.PHONY: all core gui python install_core_packages install_extra_packages update_vim_plugins install_gui_app install_python create_symlinks
+.PHONY: all core gui python node install_core_packages install_extra_packages update_vim_plugins install_gui_app install_python install_node create_symlinks
 
 all: install_extra_packages
 
@@ -7,6 +7,8 @@ core: install_core_packages update_vim_plugins create_symlinks
 gui: install_gui_app
 
 python: install_python
+
+node: install_node
 
 
 install_core_packages:
@@ -24,6 +26,10 @@ install_gui_app: install_extra_packages
 install_python: install_core_packages
 	@echo "Installing python apps..."
 	@./script/python.sh
+
+install_node: install_core_packages
+	@echo "Installing nodejs apps..."
+	@./script/node.sh
 
 update_vim_plugins: 
 	@git submodule update --init --recursive
