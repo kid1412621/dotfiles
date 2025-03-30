@@ -8,7 +8,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 
 ## Setups
 
-### CLI
+### CLI & TUI
 
 - **git**: tig + [lazygit](https://github.com/jesseduffield/lazygit)
   - [.gitconfig](./.gitconfig)
@@ -34,12 +34,13 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 - lazydocker
 - JetBrainsMonoNerdFont
 
-> **Bold** means core apps, otherwise extra apps(mainly [rust-based CLI apps](https://github.com/sts10/rust-command-line-utilities) to enhance the terminal experience).
+> **Bold** means core apps, otherwise extra apps(mainly [rust-based CLI apps](https://github.com/sts10/rust-command-line-utilities) to boost the terminal experience).
 
 ### Lang-spicific bundles
 
-- Node
 - Java
+- Python
+- Node
 - Docker/K8s
 
 ### GUI
@@ -50,7 +51,6 @@ Currently only maintained MacOS GUI apps due via brew [bundle](https://github.co
 - Obsidian
 - VS Code
 - Android Studio
-- IntelliJ IDEA
 - Orbstack
 - Postman
 - Proxyman
@@ -77,6 +77,12 @@ Or with GUI apps:
 git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make gui
 ```
 
+And for specific lang related apps, e.g. java, which will install core packages:
+
+```bash
+git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make java
+```
+
 For vim plugins update:
 
 ```bash
@@ -85,7 +91,7 @@ make update_vim_plugins
 ```
 
 > [!NOTE]
-> 1. The install script only supports package manager: brew, dnf and apt. And make sure the user got install permission.
+> 1. The install script only supports package manager: `brew`, `dnf` and `apt`. And make sure the user got install permission.
 > 2. Replace `.ssh/config` with your own settings.
 
 ## Todo
@@ -93,4 +99,4 @@ make update_vim_plugins
 - [x] ~~Finish all packages and configs.~~
 - [x] ~~Distro-specific configs, like bat, fd under Ubuntu.~~
 - [ ] ~~Replace `git submodules` with `git subtree`.~~
-- [ ] Dev env setups, e.g. NodeJS, Java, Python.
+- [x] Dev env setups, e.g. NodeJS, Java, Python.
