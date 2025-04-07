@@ -10,5 +10,5 @@ syntax enable
 filetype plugin indent on
 
 let mapleader=" "
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 
