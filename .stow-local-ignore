@@ -24,3 +24,7 @@ _darcs
 
 /script
 Makefile
+Brewfile
+.*\.Brewfile
+
+.*\.DS_Store
