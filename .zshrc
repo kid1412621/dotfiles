@@ -120,4 +120,14 @@ alias lzg="lazygit"
 alias lzd="lazydocker"
 alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
-export KUBECONFIG=~/.kube/config
+# kubeconfig
+KUBECONFIG="$HOME/.kube/config"
+[ -f "$KUBECONFIG" ] && export KUBECONFIG
+
+# android sdk
+ANDROID_HOME="$HOME/Library/Android/sdk"
+
+if [ -d "$ANDROID_HOME" ]; then
+	export ANDROID_HOME
+	export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+fi

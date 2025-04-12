@@ -81,6 +81,7 @@ And for specific lang related apps, e.g. java, which will install core packages:
 
 ```bash
 git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make java
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 ```
 
 For vim plugins update:
