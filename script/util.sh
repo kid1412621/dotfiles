@@ -14,9 +14,10 @@ os() {
   fi
 }
 
+# NOTE: some packages using i386 or aarch64
 cpu_arch() {
   local ARCH=$(uname -m)
-  if [[ "$ARCH" == "x86_64" ]]; then
+  if [[ "$ARCH" == "x86_64" || "$ARCH" == "amd64" ]]; then
     echo $ARCH
   elif [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
     echo "arm64"

@@ -7,14 +7,15 @@ PKG_MGR=$(package_manager)
 
 install_noevim() {
   local RC_FILE="$HOME/$(shell_rc)"
-  local URL="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$(cpu_arch).tar.gz"
+  local FILE="nvim-linux-$(cpu_arch).tar.gz"
+  local URL="https://github.com/neovim/neovim/releases/latest/download/${FILE}"
   local INSTALL_PATH="/opt/nvim-linux64"
 
   if ! cmd_exists nvim; then
     curl -LO $URL
     sudo rm -rf "$INSTALL_PATH"
-    sudo tar -C /opt -xzf nvim-linux64.tar.gz
-    rm nvim-linux64.tar.gz
+    sudo tar -C /opt -xzf "$FILE"
+    rm "$FILE"
     if ! grep "$INSTALL_PATH/bin" "$RC_FILE"; then
       echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
     fi
@@ -26,8 +27,8 @@ install_noevim() {
       curl -LO $URL
       sudo $PKG_MGR remove -y neovim
       sudo rm -rf "$INSTALL_PATH"
-      sudo tar -C /opt -xzf nvim-linux64.tar.gz
-      rm nvim-linux64.tar.gz
+      sudo tar -C /opt -xzf "$FILE"
+      rm "$FILE"
       if ! grep "$INSTALL_PATH/bin" "$RC_FILE"; then
         echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
       fi
@@ -52,7 +53,7 @@ apt)
   # delta (debian under 13, cannot install via apt)
   if ! cmd_exists delta; then
     delta_version=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
-    delta_deb_file="git-delta_${delta_version}_amd64.deb"
+    delta_deb_file="git-delta_${delta_version}_$(cpu_arch).deb"
     curl -fLO "https://github.com/dandavison/delta/releases/latest/download/$delta_deb_file"
     sudo dpkg -i $delta_deb_file && rm $delta_deb_file
   fi
