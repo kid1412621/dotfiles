@@ -7,10 +7,11 @@ PKG_MGR=$(package_manager)
 
 install_noevim() {
   local RC_FILE="$HOME/$(shell_rc)"
+  local URL="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$(cpu_arch).tar.gz"
   local INSTALL_PATH="/opt/nvim-linux64"
 
   if ! cmd_exists nvim; then
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    curl -LO $URL
     sudo rm -rf "$INSTALL_PATH"
     sudo tar -C /opt -xzf nvim-linux64.tar.gz
     rm nvim-linux64.tar.gz
@@ -22,7 +23,7 @@ install_noevim() {
     local NVIM_VERSION=$(nvim -v | grep -oE '^NVIM v[0-9.]+' | sed 's/^NVIM v//' | sed 's/\.//g')
     if [[ $((10#$NVIM_VERSION)) -lt 90 ]]; then
       echo "reinstalling neovim with latest version"
-      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+      curl -LO $URL
       sudo $PKG_MGR remove -y neovim
       sudo rm -rf "$INSTALL_PATH"
       sudo tar -C /opt -xzf nvim-linux64.tar.gz
@@ -85,7 +86,7 @@ if cmd_exists docker && ! cmd_exists lazydocker; then
   if [[ $PKG_MGR = "brew" ]]; then
     $(package_install_cmd) lazydocker
   else
-    curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
   fi
 fi
 

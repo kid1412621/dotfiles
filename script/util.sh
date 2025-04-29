@@ -14,6 +14,17 @@ os() {
   fi
 }
 
+cpu_arch() {
+  local ARCH=$(uname -m)
+  if [[ "$ARCH" == "x86_64" ]]; then
+    echo $ARCH
+  elif [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+    echo "arm64"
+  else
+    exit 1
+  fi
+}
+
 package_manager() {
   local os=$(os)
   if [[ $os = "Darwin" ]]; then
