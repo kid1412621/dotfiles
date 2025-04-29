@@ -7,7 +7,7 @@ PKG_MGR=$(package_manager)
 
 install_noevim() {
   local RC_FILE="$HOME/$(shell_rc)"
-  local FILE="nvim-linux-$(cpu_arch).tar.gz"
+  local FILE="nvim-linux-$(uname -m).tar.gz"
   local URL="https://github.com/neovim/neovim/releases/latest/download/${FILE}"
   local INSTALL_PATH="/opt/nvim-linux64"
 
