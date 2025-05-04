@@ -82,15 +82,6 @@ brew)
   ;;
 esac
 
-# lazydocker
-if cmd_exists docker && ! cmd_exists lazydocker; then
-  if [[ $PKG_MGR = "brew" ]]; then
-    $(package_install_cmd) lazydocker
-  else
-    curl -fsSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-  fi
-fi
-
 # Nerd fonts
 if [[ $PKG_MGR = "brew" ]]; then
   $(package_install_cmd) font-jetbrains-mono-nerd-font

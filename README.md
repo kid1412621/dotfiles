@@ -10,8 +10,9 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 
 ### CLI & TUI
 
-- **git**: tig + [lazygit](https://github.com/jesseduffield/lazygit)
+- **git**: **tig** + [lazygit](https://github.com/jesseduffield/lazygit)
   - [.gitconfig](./.gitconfig)
+  - [.gitignore](./.gitignore)
   - [.tigrc](./.tigrc)
 - **vim**: 
   - [.vimrc](./vimrc)
@@ -31,7 +32,6 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 - ripgrep
 - zoxide
 - delta
-- lazydocker
 - JetBrainsMonoNerdFont
 
 > **Bold** means core apps, otherwise extra apps(mainly [rust-based CLI apps](https://github.com/sts10/rust-command-line-utilities) to boost the terminal experience).
@@ -41,7 +41,7 @@ Under the hoods, using [stow](https://www.gnu.org/software/stow/) to create symb
 - Java
 - Python
 - Node
-- Docker/K8s
+- Container: Docker & K8S
 
 ### GUI
 
@@ -81,7 +81,6 @@ And for specific lang related apps, e.g. java, which will install core packages:
 
 ```bash
 git clone https://github.com/kid1412621/dotfiles.git && cd dotfiles && make java
-sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 ```
 
 For vim plugins update:

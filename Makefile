@@ -17,6 +17,9 @@ python: install_python
 .PHONY: node
 node: install_node
 
+.PHONY: container
+container: install_container
+
 # Scripts
 .PHONY: install_core_packages
 install_core_packages:
@@ -47,6 +50,11 @@ install_python: install_core_packages
 install_node: install_core_packages
 	@echo "Installing nodejs apps..."
 	@./script/node.sh
+
+.PHONY: install_container
+install_container: install_core_packages
+	@echo "Installing container apps..."
+	@./script/container.sh
 
 .PHONY: update_vim_plugins
 update_vim_plugins: 
