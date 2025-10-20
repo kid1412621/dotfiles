@@ -68,7 +68,7 @@ apt)
   fi
   ;;
 dnf)
-  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide" "git-delta" "fontconfig")
+  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide" "git-delta" "neovim" "fontconfig")
   $(package_install_cmd) "${APPS[@]}"
   # lazygit
   if ! cmd_exists lazygit; then
