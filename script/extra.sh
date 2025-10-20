@@ -40,7 +40,7 @@ case "$PKG_MGR" in
 apt)
   install_noevim
 
-  APPS=("bat" "ripgrep" "fd-find" "fzf")
+  APPS=("bat" "ripgrep" "fd-find" "fzf" "fontconfig")
   $(package_install_cmd) "${APPS[@]}"
   # symlink bat, fd
   mkdir -p ~/.local/bin
@@ -68,7 +68,7 @@ apt)
   fi
   ;;
 dnf)
-  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide" "git-delta")
+  APPS=("bat" "ripgrep" "fd-find" "fzf" "zoxide" "git-delta" "fontconfig")
   $(package_install_cmd) "${APPS[@]}"
   # lazygit
   if ! cmd_exists lazygit; then
