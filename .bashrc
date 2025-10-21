@@ -124,13 +124,14 @@ alias lzg="lazygit"
 alias lzd="lazydocker"
 alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
 
 # export JAVA_HOME='/opt/android-studio/jbr'
+# export PATH="$PATH:$JAVA_HOME/bin"
 # eval "$(jenv init -)"
 
 if [ -n "$WSLENV" ]; then
   export BROWSER="wslview"
 fi
+export PATH=$PATH:"/opt/nvim-linux-x86_64/bin"

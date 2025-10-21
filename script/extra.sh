@@ -7,17 +7,18 @@ PKG_MGR=$(package_manager)
 
 install_noevim() {
   local RC_FILE="$HOME/$(shell_rc)"
-  local FILE="nvim-linux-$(uname -m).tar.gz"
-  local URL="https://github.com/neovim/neovim/releases/latest/download/${FILE}"
-  local INSTALL_PATH="/opt/nvim-linux64"
+  local FILE="nvim-linux-$(uname -m)"
+  local TAR_FILE="$FILE.tar.gz"
+  local URL="https://github.com/neovim/neovim/releases/latest/download/${TAR_FILE}"
+  local INSTALL_PATH="/opt/$FILE"
 
   if ! cmd_exists nvim; then
     curl -LO $URL
     sudo rm -rf "$INSTALL_PATH"
-    sudo tar -C /opt -xzf "$FILE"
-    rm "$FILE"
+    sudo tar -C /opt -xzf "$TAR_FILE"
+    rm "$TAR_FILE"
     if ! grep "$INSTALL_PATH/bin" "$RC_FILE"; then
-      echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
+      echo "export PATH=\$PATH:\"$INSTALL_PATH/bin\"" >>"$RC_FILE"
     fi
   else
     # check neovim version (debian holding old version, lazyvim required neovim >= 0.9.0)
@@ -27,10 +28,10 @@ install_noevim() {
       curl -LO $URL
       sudo $PKG_MGR remove -y neovim
       sudo rm -rf "$INSTALL_PATH"
-      sudo tar -C /opt -xzf "$FILE"
-      rm "$FILE"
+      sudo tar -C /opt -xzf "$TAR_FILE"
+      rm "$TAR_FILE"
       if ! grep "$INSTALL_PATH/bin" "$RC_FILE"; then
-        echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >>"$RC_FILE"
+        echo "export PATH=\$PATH:\"$INSTALL_PATH/bin\"" >>"$RC_FILE"
       fi
     fi
   fi
