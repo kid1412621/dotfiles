@@ -123,9 +123,14 @@ alias g="git"
 alias lzg="lazygit"
 alias lzd="lazydocker"
 alias fzf="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+alias py=$(which python3)
 
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
+
+# kubeconfig
+KUBECONFIG="$HOME/.kube/config"
+[ -f "$KUBECONFIG" ] && export KUBECONFIG
 
 # export JAVA_HOME='/opt/android-studio/jbr'
 # export PATH="$PATH:$JAVA_HOME/bin"
