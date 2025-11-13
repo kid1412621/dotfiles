@@ -6,3 +6,5 @@
 
 /.ssh/*
 !/.ssh/config
+
+.env
