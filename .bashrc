@@ -127,6 +127,7 @@ alias py=$(which python3)
 
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 export FZF_DEFAULT_OPTS="--ansi"
+export SYSTEMD_PAGER=cat
 
 # kubeconfig
 KUBECONFIG="$HOME/.kube/config"
