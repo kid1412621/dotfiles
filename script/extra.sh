@@ -41,7 +41,7 @@ case "$PKG_MGR" in
 apt)
   install_noevim
 
-  APPS=("bat" "ripgrep" "fd-find" "fzf" "fontconfig")
+  APPS=("bat" "ripgrep" "fd-find" "fzf" "fontconfig" "xz-utils")
   $(package_install_cmd) "${APPS[@]}"
   # symlink bat, fd
   mkdir -p ~/.local/bin
