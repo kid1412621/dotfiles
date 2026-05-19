@@ -28,11 +28,23 @@ set easymotion
 set highlightedyank
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
+""" Global Nav
+map <leader>e :NERDTreeToggle<CR>
+map <leader>bd <Action>(CloseContent)
+map ]b <Action>(NextTab)
+map [b <Action>(PreviousTab)
+"" In-buffer Nav
+map gd <Action>(GotoDeclaration)
+map gI <Action>(GotoImplementation)
+map gr <Action>(FindUsages)
+map gt <Action>(GotoTypeDeclaration
+"" Debug
 map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
+map <leader>db <Action>(ToggleLineBreakpoint)
+map <leader>dc <Action>(Resume)
+map <leader>do <Action>(StepOver)
+map <leader>di <Action>(StepInto)
+map <leader>dO <Action>(StepOut)
+"" Alias
+map \b <Action>(ToggleLineBreakpoint)
+map \r <Action>(ReformatCode)
