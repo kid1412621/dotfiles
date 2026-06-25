@@ -3,33 +3,36 @@
 	email = kid1412621@gmail.com
 
 [core]
-  pager = delta
+	pager = delta
 	autocrlf = input
 
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [color]
-  ui = auto
+	ui = auto
 
 [delta]
-  navigate = true
+	navigate = true
 
 [merge]
-  conflictstyle = diff3
+	conflictstyle = diff3
 
 [diff]
-  colorMoved = default
+	colorMoved = default
 
 [push]
-  autoSetupRemote = true
+	autoSetupRemote = true
+
+[tag]
+	gpgsign = true
 
 [credential]
 	credentialStore = cache
 	helper = /usr/local/bin/git-credential-manager
 [delta]
-    side-by-side = true
-    line-numbers = true
+	side-by-side = true
+	line-numbers = true
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/local/bin/gh auth git-credential
